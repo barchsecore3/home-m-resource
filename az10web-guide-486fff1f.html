@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳洲幸运10 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce9d7 0%, #f8d5b0 45%, #f3c192 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            color: #31231a;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(100, 60, 30, 0.25), 0 8px 16px -6px rgba(0, 0, 0, 0.08);
+            padding: 2.8rem 2.5rem;
+            transition: box-shadow 0.2s ease;
+            border: 1px solid rgba(255, 245, 235, 0.5);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
+            }
+        }
+
+        /* 开场短句 — 叙事式引子 */
+        .opening {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            font-weight: 400;
+            color: #4f3526;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #eccbb0;
+        }
+        .opening strong {
+            font-weight: 550;
+            color: #7b4c2e;
+        }
+
+        /* 承接段落 */
+        .lead {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #3f2c1f;
+            margin: 1.2rem 0 1.8rem 0;
+        }
+        .lead a {
+            color: #b2653f;
+            font-weight: 550;
+            text-decoration: none;
+            padding-bottom: 1px;
+            border-bottom: 1.5px dashed #dba882;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .lead a:hover {
+            color: #7f452a;
+            border-bottom-style: solid;
+            border-color: #b2653f;
+        }
+
+        /* 特点列表 — 信息卡片风格 */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 1.8rem;
+            margin: 2rem 0 2.2rem 0;
+        }
+        @media (max-width: 560px) {
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+        .feature-item {
+            background: #fcf4ec;
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem 1.4rem 1.4rem;
+            box-shadow: inset 0 1px 2px rgba(255, 235, 215, 0.8), 0 4px 8px rgba(140, 80, 40, 0.06);
+            transition: background 0.2s, transform 0.1s;
+            border-left: 4px solid #dba274;
+        }
+        .feature-item:hover {
+            background: #f9ede2;
+            transform: translateY(-2px);
+        }
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #5f3a25;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #4d3629;
+        }
+
+        /* 场景提示 + 温和结尾 */
+        .scene-tip {
+            background: #f8ede0;
+            border-radius: 20px;
+            padding: 1.5rem 1.6rem;
+            margin: 1.5rem 0 2rem 0;
+            border: 1px solid #e9d2bd;
+            box-shadow: 0 2px 6px rgba(130, 70, 30, 0.04);
+        }
+        .scene-tip p {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #412f23;
+        }
+        .scene-tip p:last-child {
+            margin-bottom: 0;
+        }
+        .scene-tip strong {
+            color: #7b4c2e;
+        }
+        .scene-tip a {
+            color: #b2653f;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #caa385;
+        }
+        .scene-tip a:hover {
+            color: #7f452a;
+            border-bottom: 1px solid #b2653f;
+        }
+
+        /* FAQ 摘要 — 极简折叠感 */
+        .faq-digest {
+            margin: 2rem 0 1rem 0;
+            padding-top: 1rem;
+            border-top: 2px solid #e2cdb9;
+        }
+        .faq-digest summary {
+            font-weight: 550;
+            font-size: 1rem;
+            color: #5d3d2b;
+            cursor: pointer;
+            padding: 0.6rem 0.2rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .faq-digest summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-digest summary::before {
+            content: "▸";
+            font-size: 1.2rem;
+            color: #b86f47;
+            transition: transform 0.15s;
+        }
+        .faq-digest[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-digest .faq-content {
+            padding: 0.2rem 0 0.8rem 0.8rem;
+        }
+        .faq-digest .faq-content p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #3f2e22;
+            margin-bottom: 0.5rem;
+        }
+        .faq-digest .faq-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 温和结尾 */
+        .closing-note {
+            margin-top: 2.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5d3c2;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #4b382b;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+        .closing-note span {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* 链接按钮感 — 用于需要强调的 anchor */
+        .button-link {
+            display: inline-block;
+            background: #deaa80;
+            color: #2f1e14;
+            font-weight: 550;
+            padding: 0.3rem 1.1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s, box-shadow 0.15s;
+            box-shadow: 0 2px 4px rgba(150, 80, 30, 0.12);
+            border: none;
+        }
+        .button-link:hover {
+            background: #cd8f62;
+            box-shadow: 0 4px 8px rgba(130, 65, 25, 0.18);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ead8c8;
+            margin: 1.2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+
+        <!-- 开场短句：叙事式引入 -->
+        <div class="opening">
+            关于澳洲幸运10，<br>最先需要了解的几件事。
+        </div>
+
+        <!-- 承接段落：简明指南 + 访问提醒 -->
+        <div class="lead">
+            在接触任何数字游戏或快速开奖平台前，明确规则与数据源头是基本原则。<strong>澳洲幸运10</strong> 作为一种每期基于特定算法生成结果的开奖形式，其核心在于<strong>透明的时间节奏</strong>与<strong>固定的玩法框架</strong>。若你希望直接查看近期走势、开奖历史或官方设定，可以前往 <a href="https://az10web.com">澳洲幸运10</a> 获取结构化的参考信息。建议在参与前先花十分钟阅读平台上的基础说明，这对理解运行逻辑很有帮助。
+        </div>
+
+        <!-- 特点列表：信息密度较高 -->
+        <div class="features">
+            <div class="feature-item">
+                <h3>⏳ 每期节奏</h3>
+                <p>间隔短，频率稳定。适合习惯快速复盘、不喜欢长时间等待的参与者。建议设置自己的观察窗口，避免连续追看。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📐 数字范围</h3>
+                <p>从 1 到 10，每个位置独立。玩法组合相对直接，没有复杂附加条件。了解基本概率分布是理性参与的第一步。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📊 历史参考</h3>
+                <p>多数平台会保留近期结果列表。对比冷热号出现频率时，注意样本量不宜过小，至少参考 50–100 期数据。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🧩 策略边界</h3>
+                <p>任何“必胜模式”都不存在。策略的价值在于资金管理、止盈止损以及情绪控制，而非预测下一次开奖。</p>
+            </div>
+        </div>
+
+        <!-- 场景提示 + 访问提醒（温和引导） -->
+        <div class="scene-tip">
+            <p><strong>🔍 场景一：</strong>你想快速核对刚刚结束的一期号码，或者回溯最近几天的走势。这时直接使用 <a href="https://az10web.com">澳洲幸运10</a> 的列表视图会更高效，数据按时间倒序排列，一目了然。</p>
+            <p><strong>📌 场景二：</strong>你打算尝试模拟分析，但不确定规则细节。建议先在该站「玩法说明」分区确认开奖时间、最小投注单位以及限红条款。不同代理商可能在细节上有微小差异，以平台实际公示为准。</p>
+            <p><strong>⚠️ 访问提醒：</strong>请确认你所在地区的相关法规。保持理性，不要单次投入超过自己设定的损失上限。建议每天只花固定时间浏览，避免沉浸。</p>
+        </div>
+
+        <!-- FAQ 摘要 — 紧凑但自然 -->
+        <details class="faq-digest">
+            <summary>常见疑问摘要</summary>
+            <div class="faq-content">
+                <p><strong>Q：澳洲幸运10 的开奖数据是否公开可查？</strong> 是的，大部分正规站点都会在页面直接展示最近几十期结果，同时提供历史归档。你可以在 <a href="https://az10web.com">澳洲幸运10</a> 查到连续记录，无需注册。</p>
+                <p><strong>Q：有没有必要下载额外软件？</strong> 不需要。所有信息通过浏览器即可获取，移动端自适应布局也足够清晰。注意不要轻信任何需要付费才能查看“内幕数据”的渠道。</p>
+                <p><strong>Q：页面上的“走势图”该怎么看？</strong> 通常横轴为期数，纵轴为号码。连线仅用于视觉辅助，不代表任何趋势规律。建议结合冷热统计一起阅读，但不要过度解读。</p>
+            </div>
+        </details>
+
+        <!-- 温和结尾、再次自然嵌入链接（但使用另一种形式，用 button-link 样式） -->
+        <div class="closing-note">
+            <div>
+                不论你处于了解的哪个阶段，都值得给自己留出观察与反思的空间。<br>
+                若想系统浏览相关内容，可直接访问 <a href="https://az10web.com" class="button-link">澳洲幸运10</a>。
+            </div>
+            <span>— 保持清醒，自有节奏</span>
+        </div>
+
+    </div>
+</body>
+</html>
